@@ -6,6 +6,7 @@ import lombok.extern.log4j.Log4j2;
 import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
+import java.util.List;
 
 @Log4j2
 @RestController
@@ -44,5 +45,11 @@ public class DomainController {
     public String addDomain(@RequestBody StatusDomain statusDomain){
         log.info("Vừa đã thêm thành công domain: " + statusDomain.getNameDomain());
         return domainService.save(statusDomain);
+    }
+
+    @GetMapping("getAllDomain")
+    public List<StatusDomain> getAllDomain(){
+        log.info("lấy tất cả domain trong csdl");
+        return domainService.getAllDomain();
     }
 }

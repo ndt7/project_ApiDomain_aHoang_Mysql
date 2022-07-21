@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 
 import java.io.IOException;
+import java.util.List;
 
 
 public interface DomainService {
@@ -15,4 +16,5 @@ public interface DomainService {
 
     String Whois(@PathVariable("nameDomain") String nameDomain) throws IOException;
     String save(@RequestBody StatusDomain statusDomain);
+    List<StatusDomain> getAllDomain();
 }

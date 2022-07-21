@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 
 import java.io.IOException;
+import java.util.List;
 
 @Service
 public class DomainServiceImpl implements DomainService {
@@ -86,5 +87,11 @@ public class DomainServiceImpl implements DomainService {
     public String save(@RequestBody StatusDomain entity) {
         domainRepository.saveAndFlush(entity);
         return "thêm domain thành công";
+    }
+
+    @Override
+    public List<StatusDomain> getAllDomain() {
+        List<StatusDomain> listStatusDomain= domainRepository.findAll();
+        return listStatusDomain;
     }
 }
