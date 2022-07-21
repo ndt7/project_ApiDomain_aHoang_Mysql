@@ -5,6 +5,8 @@ import com.example.check_registration_domain.services.DomainService;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.web.bind.annotation.*;
 
+import java.io.IOException;
+
 @Log4j2
 @RestController
 public class DomainController {
@@ -15,6 +17,7 @@ public class DomainController {
         this.domainService = domainService;
     }
 
+    //API1
     @GetMapping("registration/{nameDomain}")
     public String registration(@PathVariable("nameDomain") String nameDomain) {
         log.info("Đã gọi đến hàm registration, name domain: " + nameDomain);
@@ -22,15 +25,19 @@ public class DomainController {
     }
 
 
+    //API2
     // gửi lên bằng phương thức Post với tên miền muốn ĐK(để mở trạng thái Đk)
     @GetMapping("openRegistration/{nameDomain}")
     public String openRegistration(@PathVariable("nameDomain") String nameDomain) {
         return domainService.OpenRegistration(nameDomain);
     }
 
+
+    // API 3
     @GetMapping("checkDomain/{nameDomain}")
-    public String checkDomain(){
-        return "";
+    public String checkDomain(@PathVariable("nameDomain") String nameDomain) throws IOException {
+        log.info("đã chạy phương thức check domain");
+        return domainService.Whois(nameDomain);
     }
 
     @PostMapping("addDomain")
